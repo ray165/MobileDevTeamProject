@@ -3,6 +3,7 @@ package com.example.mobiledevteamproject
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -11,8 +12,9 @@ class LikedMemeAdapter(private val mList: List<String>) :
     RecyclerView.Adapter<LikedMemeAdapter.ViewHolder>() {
 
     // Holds the views
-    class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        //val textView: TextView = itemView.findViewById(R.id.textView) 
+    inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+        val dateTextView: TextView = itemView.findViewById(R.id.textView_liked_meme_date)
+        val memeImageView: ImageView = itemView.findViewById(R.id.imageView_liked_meme_fragment)
     }
 
     // create new views
@@ -29,8 +31,10 @@ class LikedMemeAdapter(private val mList: List<String>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
+        var meme = mList[position]
 
-        //holder.textView.text = mList[position]
+//        holder.dateTextView.text = meme.name
+//        holder.memeImageView.setImageResource()
     }
 
     // return the number of the items in the list
