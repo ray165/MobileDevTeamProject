@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Nav
     private lateinit var navController: NavController
     lateinit var drawerLayout: DrawerLayout
     lateinit var toggle:ActionBarDrawerToggle
-    lateinit var navigationView: NavigationView
+    lateinit var navView: NavigationView
     lateinit var db:FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,21 +59,26 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Nav
 
         //---------------------------- FOR HAMBURGER MENU ----------------------------//
 
-        //this is the hamburger button in the drawlayout
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        //the parent
         drawerLayout = findViewById<DrawerLayout>(R.id.drawer_main)
+        navView = findViewById<NavigationView>(R.id.navigationView_main)
 
-        //the last child (the sliding menu from the left)
-        navigationView = findViewById(R.id.navigationView_main)
-        navigationView.setNavigationItemSelectedListener(this)
-
-
-        //for the hamburger button. Include string for open button text, and close button text. Add in strings.xml
-        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
+        // Set up the ActionBarDrawerToggle
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        // Set up the navigation listener
+        navView.setNavigationItemSelectedListener { menuItem ->
+            // Handle the navigation item clicks here
+            menuItem.isChecked = true
+            drawerLayout.closeDrawers()
+            true
+        }
+
+        // Set up the navigation graph
+        val appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 
     //BOTTOM NAV - Need to implement for PopupMenu interface
@@ -90,29 +95,9 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Nav
         return false
     }
 
-    //HAMBURGER NAV - this is to enable listening of the button clicks in the drawer layout
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-
-            //if select Home on hamburger menu, replace fragment to HomeFragment
-            R.id.menuItem_hamburger_home -> supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainerView_main, HomeFragment()
-            ).commit()
-
-            //if select Likes on hamburger menu, replace fragment to LikeFragment
-            R.id.menuItem_hamburger_likes -> supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainerView_main, LikeFragment()
-            ).commit()
-
-            //if select About on hamburger menu, replace fragment to LikeFragment
-            R.id.menuItem_hamburger_about -> supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainerView_main, AboutFragment()
-            ).commit()
-        }
-
         drawerLayout.closeDrawer(GravityCompat.START) // close drawer layout
         return true
     }
-
 
 }
