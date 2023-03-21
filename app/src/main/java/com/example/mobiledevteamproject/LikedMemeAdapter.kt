@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class LikedMemeAdapter(private val mList: List<String>) :
+class LikedMemeAdapter(private val mList: List<MemeData>) :
     RecyclerView.Adapter<LikedMemeAdapter.ViewHolder>() {
 
     // Holds the views
