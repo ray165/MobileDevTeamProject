@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menuItem_hamburger_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/menuItem_hamburger_likes"
+        android:id="@+id/likeFragment"
         android:icon="@drawable/ic_outline_favorite_border_24"
         android:title="Likes" />
     <item
-        android:id="@+id/menuItem_hamburger_about"
+        android:id="@+id/aboutFragment"
         android:icon="@drawable/ic_baseline_people_outline_24"
         android:title="About Us" />
 </menu>
