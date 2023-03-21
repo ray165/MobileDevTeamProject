@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_hamburger_likes"
+        android:icon="@drawable/ic_outline_favorite_border_24"
+        android:title="Likes" />
+    <item
+        android:id="@+id/menuItem_hamburger_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
+</menu>
