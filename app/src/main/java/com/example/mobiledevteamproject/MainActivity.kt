@@ -3,6 +3,7 @@ package com.example.mobiledevteamproject
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.PopupMenu
@@ -16,6 +17,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, NavigationView.OnNavigationItemSelectedListener{
 
@@ -23,10 +27,25 @@ class MainActivity : AppCompatActivity(), PopupMenu.OnMenuItemClickListener, Nav
     lateinit var drawerLayout: DrawerLayout
     lateinit var toggle:ActionBarDrawerToggle
     lateinit var navigationView: NavigationView
+    lateinit var db:FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //---------------------------- FOR FIRESTORE DATABASE ----------------------------//
+        db = Firebase.firestore
+
+        db.collection("meme")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d("GET MEME", "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET MEME", "Error getting documents: ", exception)
+            }
 
         //---------------------------- FOR BOTTOM NAV MENU ----------------------------//
 
