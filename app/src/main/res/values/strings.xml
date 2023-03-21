@@ -7,5 +7,7 @@
     <string name="fragment_home_title_string">Meme Of The Day</string>
     <string name="meme_fragment_like_bnt">Like</string>
     <string name="imageView_content_description_meme">for a meme image</string>
+    <string name="textView_home_fragment_message_title">Your Meowage Of The Day</string>
+    <string name="textView_home_fragment_quote_placeholder">Quote Placeholder</string>
 
 </resources>
