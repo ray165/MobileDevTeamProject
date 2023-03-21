@@ -9,5 +9,7 @@
     <string name="imageView_content_description_meme">for a meme image</string>
     <string name="textView_home_fragment_message_title">Your Meowage Of The Day</string>
     <string name="textView_home_fragment_quote_placeholder">Quote Placeholder</string>
+    <string name="textView_liked_meme_date">PLACEHOLDER DATE</string>
+    <string name="imageView_liked_meme_fragment_content_desc">placeholder for an image that was liked and generated from firebase</string>
 
 </resources>
