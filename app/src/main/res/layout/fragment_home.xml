@@ -21,16 +21,27 @@
             android:text="@string/fragment_home_title_string"
             android:textSize="24sp" />
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragmentContainerView"
+            android:name="com.example.mobiledevteamproject.MemeFragment"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:visibility="gone"
+            tools:layout="@layout/fragment_meme"
+            tools:visibility="visible" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2_home_fragment_memes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="300dp"
+            android:visibility="visible"
+            tools:visibility="gone">
 
         </androidx.viewpager2.widget.ViewPager2>
 
         <Space
-            android:layout_width="27dp"
-            android:layout_height="267dp" />
+            android:layout_width="match_parent"
+            android:layout_height="67dp" />
 
         <TextView
             android:id="@+id/textView_home_fragment_quote_title"
